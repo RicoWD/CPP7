@@ -14,7 +14,7 @@
 
 void	swap(T& a, T& b)
 {
-
+	
 }
 
 T&	min(T& a, T& b)
