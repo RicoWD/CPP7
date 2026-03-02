@@ -6,7 +6,7 @@
 #    By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/21 15:23:43 by erpascua          #+#    #+#              #
-#    Updated: 2026/02/27 14:37:49 by erpascua         ###   ########.fr        #
+#    Updated: 2026/03/02 16:16:18 by erpascua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@
 NAME =	convert
 
 SRCS =	srcs/main.cpp \
-		srcs/TEST.cpp
 
 OBJ_DIR = obj
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
