@@ -6,30 +6,41 @@
 /*   By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 15:19:28 by erpascua          #+#    #+#             */
-/*   Updated: 2026/02/27 15:38:10 by erpascua         ###   ########.fr       */
+/*   Updated: 2026/03/03 02:22:43 by erpascua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "whatever.hpp"
+#include "iter.hpp"
+
+void	printInt(int &n)
+{
+	std::cout << n << std::endl;
+}
+
+void	printChar(char &c)
+{
+	std::cout << c << std::endl;
+}
+
+void	printStr(const char* &s)
+{
+	std::cout << s << std::endl;
+}
 
 int	main(void)
 {
-	int a = 2;
-	int b = 3;
+	int			intArray[] = {1, 2, 3, 4, 5};
+	char		charArray[] = {'a', 'b', 'c', 'd', 'e'};
+	const char*	strArray[] = {"gpollast", "bsuger", "fmotte", "aautret", "tlorette"};
 	
-	::swap(a, b);
-
-	std::cout << "a = " << a << ", b = " << b << std::endl;
-	std::cout << "min( a, b ) = " << ::min(a, b) << std::endl;
-	std::cout << "max( a, b ) = " << ::max(a, b) << std::endl;
+	std::cout << "=== Int ===" << std::endl;
+	iter(intArray, 5, printInt);
 	
-	std::string c = "chaine1";
-	std::string d = "chaine2";
+	std::cout << "=== Char ===" << std::endl;
+	iter(charArray, 5, printChar);
 	
-	::swap(c, d);
+	std::cout << "=== Str ===" << std::endl;
+	iter(strArray, 5, printStr);
 	
-	std::cout << "c = " << c << ", d = " << d << std::endl;
-	std::cout << "min( c, d ) = " << ::min(c, d) << std::endl;
-	std::cout << "max( c, d ) = " << ::max(c, d) << std::endl;
 	return (0);
 }

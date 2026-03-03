@@ -6,7 +6,7 @@
 /*   By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 16:23:28 by erpascua          #+#    #+#             */
-/*   Updated: 2026/03/02 19:02:48 by erpascua         ###   ########.fr       */
+/*   Updated: 2026/03/03 01:55:41 by erpascua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 template <typename T>
 void	iter(T *array, const unsigned int len, void (*f)(T &element))
 {
-	for (int i = 0; i < len)
-		
+	for (unsigned int i = 0; i < len; i++)
+	{
+		f(array[i]);
+	}
 }
+
