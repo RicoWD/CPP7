@@ -6,7 +6,7 @@
 /*   By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 16:23:28 by erpascua          #+#    #+#             */
-/*   Updated: 2026/03/03 02:33:07 by erpascua         ###   ########.fr       */
+/*   Updated: 2026/03/03 20:34:53 by erpascua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,65 @@
 
 # include <string.h>
 # include <iostream>
+# include <cstdlib>
 
+template <typename T>
 class Array
 {
+	private:
+		int	_size;
+		T	*array;
+
 	public:
 		// OCF
-		Array();
-		Array(unsigned int n);
-		Array(const Array &other);
-		Array&	operator=(const Array &other);
-		~Array();
 		
-		// Member functions
-		template <typename T>
-		unsigned int	size() const
+		Array(): _size(0), array(0) {};
+		Array(int size): _size(size) { array = new T[_size](); }
+		Array(const Array &cpy): _size(cpy._size)
 		{
-			return (sizeof(this->array) / sizeof(T));
+			if (_size > 0)
+			{
+				array = new T[_size]();
+				for (int i = 0; i < _size; i++)
+					array[i] = cpy.array[i];
+			}
+			else
+				array = 0;
+		};
+		Array&	operator=(const Array &cpy)
+		{
+			if (this != &cpy)
+			{
+				delete[] array; 
+				_size = cpy._size;
+				if (_size > 0)
+				{
+					array = new T[_size]();
+					for (int i = 0; i < _size; i++)
+						array[i] = cpy.array[i];
+				}
+				else
+					array = 0;
+			}
+			return (*this); 
 		}
+		~Array() { delete[] array; };
 		
-		template <typename T>
-		T&				operator[](unsigned int i)
+		// Member functions - Templates
+		
+		int	size() const { return _size; }
+		
+		T&			operator[](int i)
 		{
-			if (i >= this->size<T>())
-				throw std::out_of_range("index out of range");
+			if (i < 0 || i >= this->size())
+				throw std::out_of_range("Error: index out of range");
 			return (this->array[i]);
 		}
 		
-		template <typename T>
-		const T&		operator[](unsigned int index) const
+		const T&	operator[](int index) const
 		{
-			if (index >= this->size<T>())
-				throw std::out_of_range("index out of range");
+			if (index < 0 || index >= this->size())
+				throw std::out_of_range("Error: index out of range");
 			return (this->array[index]);
 		}
 };
